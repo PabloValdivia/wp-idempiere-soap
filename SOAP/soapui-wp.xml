@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="bdd541ca-2161-4d17-ab33-82d30928ea56" activeEnvironment="Default" name="ws-wordpress" resourceRoot="" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="eef64290-7116-45ad-ac7b-9fc51df6812f" wsaVersion="NONE" name="ModelADServiceSoapBinding" type="wsdl" bindingName="{http://idempiere.org/ADInterface/1_0}ModelADServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://192.168.15.42:8080/ADInterface/services/ModelADService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://192.168.15.42:8080/ADInterface/services/ModelADService?wsdl"><con:part><con:url>http://192.168.15.42:8080/ADInterface/services/ModelADService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ModelADService" targetNamespace="http://idempiere.org/ADInterface/1_0" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://idempiere.org/ADInterface/1_0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://idempiere.org/ADInterface/1_0">
+      <xsd:element name="WindowTabData" type="tns:WindowTabData"/>
+      <xsd:complexType name="WindowTabData">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DataSet" type="tns:DataSet"/>
+          <xsd:element minOccurs="0" name="RowCount" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Success" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Error" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ErrorInfo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Status" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="StatusError" type="xsd:boolean"/>
+        </xsd:sequence>
+        <xsd:attribute name="NumRows" type="xsd:int"/>
+        <xsd:attribute name="TotalRows" type="xsd:int"/>
+        <xsd:attribute name="StartRow" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="DataSet">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="DataRow" type="tns:DataRow"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DataRow">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="tns:DataField"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DataField">
+        <xsd:sequence>
+          <xsd:element name="val" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="lookup" type="tns:LookupValues"/>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" use="optional"/>
+        <xsd:attribute name="column" type="xsd:string"/>
+        <xsd:attribute name="lval" type="xsd:string" use="optional"/>
+        <xsd:attribute name="disp" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="edit" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="error" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="errorVal" type="xsd:string" use="optional"/>
+      </xsd:complexType>
+      <xsd:complexType name="LookupValues">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="lv" type="tns:LookupValue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LookupValue">
+        <xsd:sequence/>
+        <xsd:attribute name="val" type="xsd:string"/>
+        <xsd:attribute name="key" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="GetProcessParams" type="tns:GetProcessParams"/>
+      <xsd:element name="ProcessParams" type="tns:ProcessParams"/>
+      <xsd:element name="RunProcess" type="tns:RunProcess"/>
+      <xsd:element name="RunProcessResponse" type="tns:RunProcessResponse"/>
+      <xsd:complexType name="ProcessParams">
+        <xsd:sequence>
+          <xsd:element name="Params" type="tns:ProcessParamList"/>
+          <xsd:element name="Description" type="xsd:string"/>
+          <xsd:element name="Name" type="xsd:string"/>
+          <xsd:element name="Help" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="GetProcessParams">
+        <xsd:sequence/>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="RunProcess">
+        <xsd:sequence>
+          <xsd:element name="ParamValues" type="tns:DataRow"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+        <xsd:attribute name="DocAction" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="RunProcessResponse">
+        <xsd:sequence>
+          <xsd:element name="Error" type="xsd:string"/>
+          <xsd:element name="Summary" type="xsd:string"/>
+          <xsd:element name="LogInfo" type="xsd:string"/>
+          <xsd:element name="Data" type="xsd:hexBinary"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsError" type="xsd:boolean"/>
+        <xsd:attribute name="IsReport" type="xsd:boolean"/>
+        <xsd:attribute name="ReportFormat" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="ProcessParamList">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Param" type="tns:ProcessParam"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProcessParam">
+        <xsd:sequence>
+          <xsd:element name="Description" type="xsd:string"/>
+          <xsd:element name="Help" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="lookup" type="tns:LookupValues"/>
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="DefaultValue" type="xsd:string"/>
+        <xsd:attribute name="DefaultValue2" type="xsd:string"/>
+        <xsd:attribute name="IsMandatory" type="xsd:boolean"/>
+        <xsd:attribute name="IsRange" type="xsd:boolean"/>
+        <xsd:attribute name="FieldLength" type="xsd:int"/>
+        <xsd:attribute name="DisplayType" type="xsd:int"/>
+        <xsd:attribute name="ColumnName" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+      <xsd:element name="ADLoginResponse" type="tns:ADLoginResponse"/>
+      <xsd:complexType name="ADLoginRequest">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string"/>
+          <xsd:element name="pass" type="xsd:string"/>
+          <xsd:element name="lang" type="xsd:string"/>
+          <xsd:element name="ClientID" type="xsd:int"/>
+          <xsd:element name="RoleID" type="xsd:int"/>
+          <xsd:element name="OrgID" type="xsd:int"/>
+          <xsd:element name="WarehouseID" type="xsd:int"/>
+          <xsd:element name="stage" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ADLoginResponse">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:int"/>
+          <xsd:element name="roles" type="tns:LookupValues"/>
+          <xsd:element name="langs" type="tns:LookupValues"/>
+          <xsd:element name="orgs" type="tns:LookupValues"/>
+          <xsd:element name="clients" type="tns:LookupValues"/>
+          <xsd:element name="warehouses" type="tns:LookupValues"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StandardResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Error" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="outputFields" type="tns:outputFields"/>
+          <xsd:element minOccurs="0" name="RunProcessResponse" type="tns:RunProcessResponse"/>
+          <xsd:element minOccurs="0" name="WindowTabData" type="tns:WindowTabData"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsError" type="xsd:boolean"/>
+        <xsd:attribute name="IsRolledBack" type="xsd:boolean"/>
+        <xsd:attribute name="RecordID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="outputFields">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="outputField" type="tns:outputField"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="outputField">
+        <xsd:attribute name="column" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="Text" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="StandardResponse" type="tns:StandardResponse"/>
+      <xsd:element name="ModelSetDocActionRequest" type="tns:ModelSetDocActionRequest"/>
+      <xsd:complexType name="ModelSetDocAction">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="tableName" type="xsd:string"/>
+          <xsd:element name="recordID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="recordIDVariable" type="xsd:string"/>
+          <xsd:element name="docAction" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelSetDocActionRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelSetDocAction" type="tns:ModelSetDocAction"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelRunProcess" type="tns:ModelRunProcess"/>
+      <xsd:complexType name="ModelRunProcess">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="ParamValues" type="tns:DataRow"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+        <xsd:attribute name="DocAction" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="ModelRunProcessRequest" type="tns:ModelRunProcessRequest"/>
+      <xsd:complexType name="ModelRunProcessRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelRunProcess" type="tns:ModelRunProcess"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelGetListRequest" type="tns:ModelGetListRequest"/>
+      <xsd:complexType name="ModelGetList">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="AD_Reference_ID" type="xsd:int"/>
+          <xsd:element name="Filter" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelGetListRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelGetList" type="tns:ModelGetList"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelCRUDRequest" type="tns:ModelCRUDRequest"/>
+      <xsd:complexType name="ModelCRUD">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="TableName" type="xsd:string"/>
+          <xsd:element name="RecordID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="recordIDVariable" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string"/>
+          <xsd:element name="Action">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Create"/>
+                <xsd:enumeration value="Read"/>
+                <xsd:enumeration value="Update"/>
+                <xsd:enumeration value="Delete"/>
+                <xsd:enumeration value="CreateUpdate"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Offset" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Limit" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="DataRow" type="tns:DataRow"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelCRUDRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelCRUD" type="tns:ModelCRUD"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="operations">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="operation" type="tns:operation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="operation">
+        <xsd:sequence>
+          <xsd:element name="TargetPort">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="createData"/>
+                <xsd:enumeration value="readData"/>
+                <xsd:enumeration value="updateData"/>
+                <xsd:enumeration value="deleteData"/>
+                <xsd:enumeration value="runProcess"/>
+                <xsd:enumeration value="setDocAction"/>
+                <xsd:enumeration value="createUpdateData"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ModelCRUD" type="tns:ModelCRUD"/>
+          <xsd:element minOccurs="0" name="ModelSetDocAction" type="tns:ModelSetDocAction"/>
+          <xsd:element minOccurs="0" name="ModelRunProcess" type="tns:ModelRunProcess"/>
+        </xsd:sequence>
+        <xsd:attribute default="false" name="preCommit" type="xsd:boolean"/>
+        <xsd:attribute default="false" name="postCommit" type="xsd:boolean"/>
+      </xsd:complexType>
+      <xsd:element name="CompositeRequest" type="tns:CompositeRequest"/>
+      <xsd:complexType name="CompositeRequest">
+        <xsd:sequence>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" name="operations" type="tns:operations"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CompositeResponses" type="tns:CompositeResponses"/>
+      <xsd:complexType name="CompositeResponses">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="CompositeResponse" type="tns:CompositeResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompositeResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="StandardResponse" type="tns:StandardResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createUpdateData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createDataResponse">
+    <wsdl:part element="tns:StandardResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocAction">
+    <wsdl:part element="tns:ModelSetDocActionRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readDataResponse">
+    <wsdl:part element="tns:WindowTabData" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runProcessResponse">
+    <wsdl:part element="tns:RunProcessResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteDataResponse">
+    <wsdl:part element="tns:StandardResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryDataResponse">
+    <wsdl:part element="tns:WindowTabData" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getListResponse">
+    <wsdl:part element="tns:WindowTabData" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="readData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createUpdateDataResponse">
+    <wsdl:part element="tns:StandardResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setDocActionResponse">
+    <wsdl:part element="tns:StandardResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateDataResponse">
+    <wsdl:part element="tns:StandardResponse" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runProcess">
+    <wsdl:part element="tns:ModelRunProcessRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryData">
+    <wsdl:part element="tns:ModelCRUDRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getList">
+    <wsdl:part element="tns:ModelGetListRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ModelADService">
+    <wsdl:operation name="setDocAction">
+      <wsdl:input message="tns:setDocAction" name="setDocAction"></wsdl:input>
+      <wsdl:output message="tns:setDocActionResponse" name="setDocActionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createUpdateData">
+      <wsdl:input message="tns:createUpdateData" name="createUpdateData"></wsdl:input>
+      <wsdl:output message="tns:createUpdateDataResponse" name="createUpdateDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getList">
+      <wsdl:input message="tns:getList" name="getList"></wsdl:input>
+      <wsdl:output message="tns:getListResponse" name="getListResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readData">
+      <wsdl:input message="tns:readData" name="readData"></wsdl:input>
+      <wsdl:output message="tns:readDataResponse" name="readDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createData">
+      <wsdl:input message="tns:createData" name="createData"></wsdl:input>
+      <wsdl:output message="tns:createDataResponse" name="createDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runProcess">
+      <wsdl:input message="tns:runProcess" name="runProcess"></wsdl:input>
+      <wsdl:output message="tns:runProcessResponse" name="runProcessResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryData">
+      <wsdl:input message="tns:queryData" name="queryData"></wsdl:input>
+      <wsdl:output message="tns:queryDataResponse" name="queryDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteData">
+      <wsdl:input message="tns:deleteData" name="deleteData"></wsdl:input>
+      <wsdl:output message="tns:deleteDataResponse" name="deleteDataResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateData">
+      <wsdl:input message="tns:updateData" name="updateData"></wsdl:input>
+      <wsdl:output message="tns:updateDataResponse" name="updateDataResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ModelADServiceSoapBinding" type="tns:ModelADService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createUpdateData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="createUpdateData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createUpdateDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDocAction">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="setDocAction">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setDocActionResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getList">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getList">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getListResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="readData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="readData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="readDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="createData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runProcess">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="runProcess">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="runProcessResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="queryData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="deleteData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateData">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="updateData">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateDataResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ModelADService">
+    <wsdl:port binding="tns:ModelADServiceSoapBinding" name="ModelADServiceImplPort">
+      <soap:address location="http://192.168.15.42:8080/ADInterface/services/ModelADService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint></con:endpoints><con:operation id="d5c1b279-0943-4bb9-b4a3-f1a93851c369" isOneWay="false" action="" name="createData" bindingOperationName="createData" type="Request-Response" outputName="createDataResponse" inputName="createData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6284c423-7c1d-4df5-a462-fd52f2bca6c7" name="wp-AddUserRole"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:createData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-AddUserRole</_0:serviceType>
+                <_0:DataRow>
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000003</_0:val>
+                  </_0:field>                 
+                  <_0:field column="AD_Role_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>
+                 </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:createData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/createData"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d751dc16-34cf-45de-b30c-88885e4c5b45" name="wp-userRQ"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:createData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-userRQ</_0:serviceType>
+                <_0:DataRow>
+                  <_0:field column="R_RequestType_ID">
+                     <_0:val>1000001</_0:val>
+                  </_0:field>                 
+                  <_0:field column="R_Category_ID">
+                     <_0:val>1000001</_0:val>
+                  </_0:field>
+                  <_0:field column="Summary">
+                     <_0:val>Dear @Name@,\n Thank you for registering with us, the innovative way to manage your properties and shorten the communication gap between Landlords and Brokers
+please follow this link to verify your account email</_0:val>
+                  </_0:field>
+                  <_0:field column="SalesRep_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>
+                  <!--
+                  <_0:field column="C_BPartner_ID">
+                     <_0:val>1000004</_0:val>
+                  </_0:field>
+                  -->
+                  <_0:field column="AD_Table_ID">
+                     <_0:val>114</_0:val>
+                  </_0:field>
+                  <_0:field column="Record_ID">
+                     <_0:val>1000178</_0:val>
+                  </_0:field>                  
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000178</_0:val>
+                  </_0:field> 
+                                    
+                 </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:createData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/createData"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="afd980e6-0aac-45b4-b298-de5d94aac5ca" isOneWay="false" action="" name="createUpdateData" bindingOperationName="createUpdateData" type="Request-Response" outputName="createUpdateDataResponse" inputName="createUpdateData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fe63259a-c8f2-429e-bc8a-4373fed883bf" name="wp-createUpdateUser"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:createUpdateData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-createUpdateUser</_0:serviceType>
+               <_0:DataRow>
+                  <!--
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000085</_0:val>
+                  </_0:field>  -->                 
+                  <_0:field column="Name">
+                     <_0:val>isalhi</_0:val>
+                  </_0:field>
+                  <_0:field column="Value">
+                     <_0:val>userlogin5</_0:val>
+                  </_0:field>
+                  <_0:field column="Password">
+                     <_0:val>clayoven</_0:val>
+                  </_0:field>
+                  <_0:field column="EMail">
+                     <_0:val>ibrahim@alsalehi.net</_0:val>
+                  </_0:field>                  
+                  <_0:field column="Phone">
+                     <_0:val>0506655-0-5-</_0:val>
+                  </_0:field>
+                   <_0:field column="Phone2">
+                     <_0:val>33444</_0:val>
+                  </_0:field>                        
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:createData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/createUpdateData"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e9079c12-a446-4e49-8d82-6bbfa5055590" name="userVerification"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>      
+      <_0:createUpdateData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-createUpdateUser</_0:serviceType>
+               <_0:DataRow>
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000085</_0:val>
+                  </_0:field>
+			   <_0:field column="EMailVerify">
+                     <_0:val>___---___---</_0:val>
+                  </_0:field>                                 
+			   <_0:field column="EMailVerifyDate">
+                     <_0:val>2016-10-31 23:38:03.328</_0:val>
+                  </_0:field>  
+                  <_0:field column="IsLocked">
+                  	<_0:val>N</_0:val>
+                  </_0:field>  
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:createData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/createUpdateData"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="aefa7fa9-c39c-49b9-b8a7-d076175d699e" isOneWay="false" action="" name="deleteData" bindingOperationName="deleteData" type="Request-Response" outputName="deleteDataResponse" inputName="deleteData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation><con:operation id="323ee3e6-6b47-4603-a572-946907841af1" isOneWay="false" action="" name="getList" bindingOperationName="getList" type="Request-Response" outputName="getListResponse" inputName="getList" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c834c389-15a8-4ab3-82bf-5c8b918665dd" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:getList>
+         <_0:ModelGetListRequest>
+            <_0:ModelGetList>
+               <_0:serviceType>?</_0:serviceType>
+               <_0:AD_Reference_ID>?</_0:AD_Reference_ID>
+               <_0:Filter>?</_0:Filter>
+            </_0:ModelGetList>
+            <_0:ADLoginRequest>
+               <_0:user>?</_0:user>
+               <_0:pass>?</_0:pass>
+               <_0:lang>?</_0:lang>
+               <_0:ClientID>?</_0:ClientID>
+               <_0:RoleID>?</_0:RoleID>
+               <_0:OrgID>?</_0:OrgID>
+               <_0:WarehouseID>?</_0:WarehouseID>
+               <_0:stage>?</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelGetListRequest>
+      </_0:getList>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/getList"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="cb426d73-73bd-4335-a3e4-1f390e04ffae" isOneWay="false" action="" name="queryData" bindingOperationName="queryData" type="Request-Response" outputName="queryDataResponse" inputName="queryData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="67e7f9b4-0104-4f85-991d-6cbebbcf6d0c" name="queryBP"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:queryData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-queryBP</_0:serviceType>
+                <_0:DataRow>
+                  <!--Zero or more repetitions:-->
+                  <!--
+                  <_0:field column="C_BP_Group_ID">
+                     <_0:val></_0:val>
+                  </_0:field>
+                  
+                  <_0:field column="AD_OrgBP_ID">
+                    <_0:val></_0:val>
+                  </_0:field>
+ 			   -->
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:queryData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/queryData"/><con:wsrmConfig version="1.2"/></con:call><con:call id="0c657e4b-5dc6-4fcd-b6f4-6a0274b6e744" name="wp-queryOrders"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:queryData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-queryOrders</_0:serviceType>
+                <_0:DataRow>
+                  <!--Zero or more repetitions:-->
+                  <_0:field column="C_BPartner_ID">
+                     <_0:val>112</_0:val>
+                  </_0:field>
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:queryData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/queryData"/><con:wsrmConfig version="1.2"/></con:call><con:call id="fa69dbc5-167a-40b8-a08d-644c833c7d01" name="queryUsers"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:queryData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-queryUsers</_0:serviceType>
+                <_0:DataRow>
+                  <!--Zero or more repetitions:-->
+                  <!--
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000002</_0:val>
+                  </_0:field>
+                  <_0:field column="EMail">
+                    <_0:val>admin @ gardenworld.com</_0:val>
+                  </_0:field>
+                  -->
+                  <_0:field column="Value">
+			     <_0:val>fuser01</_0:val>
+			   </_0:field>
+                  
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:queryData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/queryData"/><con:wsrmConfig version="1.2"/></con:call><con:call id="eeb418b6-132a-4917-b6b5-acd99897d78b" name="queryUserRole"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:queryData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>wp-queryUserRole</_0:serviceType>
+                <_0:DataRow>
+                  <!--Zero or more repetitions:-->
+
+                  <_0:field column="AD_User_ID">
+                     <_0:val>1000002</_0:val>
+                  </_0:field>
+                  
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:queryData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/queryData"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c325cf21-65a1-4adf-b039-914554aab21b" isOneWay="false" action="" name="readData" bindingOperationName="readData" type="Request-Response" outputName="readDataResponse" inputName="readData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b4644e2f-1227-40e4-a62e-92c069f05675" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:readData>
+         <_0:ModelCRUDRequest>
+            <_0:ModelCRUD>
+               <_0:serviceType>?</_0:serviceType>
+               <_0:TableName>?</_0:TableName>
+               <_0:RecordID>?</_0:RecordID>
+               <!--Optional:-->
+               <_0:recordIDVariable>?</_0:recordIDVariable>
+               <!--Optional:-->
+               <_0:Filter>?</_0:Filter>
+               <_0:Action>?</_0:Action>
+               <!--Optional:-->
+               <_0:Offset>?</_0:Offset>
+               <!--Optional:-->
+               <_0:Limit>?</_0:Limit>
+               <!--Optional:-->
+               <_0:DataRow>
+                  <!--Zero or more repetitions:-->
+                  <_0:field type="?" column="?" lval="?" disp="?" edit="?" error="?" errorVal="?">
+                     <_0:val>?</_0:val>
+                     <!--Optional:-->
+                     <_0:lookup>
+                        <!--Zero or more repetitions:-->
+                        <_0:lv val="?" key="?"/>
+                     </_0:lookup>
+                  </_0:field>
+               </_0:DataRow>
+            </_0:ModelCRUD>
+            <_0:ADLoginRequest>
+               <_0:user>?</_0:user>
+               <_0:pass>?</_0:pass>
+               <_0:lang>?</_0:lang>
+               <_0:ClientID>?</_0:ClientID>
+               <_0:RoleID>?</_0:RoleID>
+               <_0:OrgID>?</_0:OrgID>
+               <_0:WarehouseID>?</_0:WarehouseID>
+               <_0:stage>?</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelCRUDRequest>
+      </_0:readData>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/readData"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="647f1b5f-f78f-4a97-8909-f4421ae8013b" isOneWay="false" action="" name="runProcess" bindingOperationName="runProcess" type="Request-Response" outputName="runProcessResponse" inputName="runProcess" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4364eb42-9b7b-4fb3-9875-cb044d57ed4b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:runProcess>
+         <_0:ModelRunProcessRequest>
+            <_0:ModelRunProcess AD_Process_ID="?" AD_Menu_ID="?" AD_Record_ID="?" DocAction="?">
+               <_0:serviceType>?</_0:serviceType>
+               <_0:ParamValues>
+                  <!--Zero or more repetitions:-->
+                  <_0:field type="?" column="?" lval="?" disp="?" edit="?" error="?" errorVal="?">
+                     <_0:val>?</_0:val>
+                     <!--Optional:-->
+                     <_0:lookup>
+                        <!--Zero or more repetitions:-->
+                        <_0:lv val="?" key="?"/>
+                     </_0:lookup>
+                  </_0:field>
+               </_0:ParamValues>
+            </_0:ModelRunProcess>
+            <_0:ADLoginRequest>
+               <_0:user>?</_0:user>
+               <_0:pass>?</_0:pass>
+               <_0:lang>?</_0:lang>
+               <_0:ClientID>?</_0:ClientID>
+               <_0:RoleID>?</_0:RoleID>
+               <_0:OrgID>?</_0:OrgID>
+               <_0:WarehouseID>?</_0:WarehouseID>
+               <_0:stage>?</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelRunProcessRequest>
+      </_0:runProcess>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/runProcess"/></con:call></con:operation><con:operation id="50cf1e75-b070-4391-9fa2-e5ee05def6f9" isOneWay="false" action="" name="setDocAction" bindingOperationName="setDocAction" type="Request-Response" outputName="setDocActionResponse" inputName="setDocAction" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b310d3b9-cad3-4e4b-b18c-48ca457a266c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/ModelADService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:setDocAction>
+         <_0:ModelSetDocActionRequest>
+            <_0:ModelSetDocAction>
+               <_0:serviceType>?</_0:serviceType>
+               <_0:tableName>?</_0:tableName>
+               <_0:recordID>?</_0:recordID>
+               <!--Optional:-->
+               <_0:recordIDVariable>?</_0:recordIDVariable>
+               <_0:docAction>?</_0:docAction>
+            </_0:ModelSetDocAction>
+            <_0:ADLoginRequest>
+               <_0:user>?</_0:user>
+               <_0:pass>?</_0:pass>
+               <_0:lang>?</_0:lang>
+               <_0:ClientID>?</_0:ClientID>
+               <_0:RoleID>?</_0:RoleID>
+               <_0:OrgID>?</_0:OrgID>
+               <_0:WarehouseID>?</_0:WarehouseID>
+               <_0:stage>?</_0:stage>
+            </_0:ADLoginRequest>
+         </_0:ModelSetDocActionRequest>
+      </_0:setDocAction>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/ModelADService/setDocAction"/></con:call></con:operation><con:operation id="4bf76c07-b675-4c4c-9362-98334189ea30" isOneWay="false" action="" name="updateData" bindingOperationName="updateData" type="Request-Response" outputName="updateDataResponse" inputName="updateData" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="a2ea0477-844c-4362-8b1d-8554d513f1bb" wsaVersion="NONE" name="compositeInterfaceSoapBinding" type="wsdl" bindingName="{http://idempiere.org/ADInterface/1_0}compositeInterfaceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://192.168.15.42:8080/ADInterface/services/compositeInterface?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://192.168.15.42:8080/ADInterface/services/compositeInterface?wsdl"><con:part><con:url>http://192.168.15.42:8080/ADInterface/services/compositeInterface?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="compositeInterface" targetNamespace="http://idempiere.org/ADInterface/1_0" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://idempiere.org/ADInterface/1_0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://idempiere.org/ADInterface/1_0">
+      <xsd:element name="WindowTabData" type="tns:WindowTabData"/>
+      <xsd:complexType name="WindowTabData">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DataSet" type="tns:DataSet"/>
+          <xsd:element minOccurs="0" name="RowCount" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Success" type="xsd:boolean"/>
+          <xsd:element minOccurs="0" name="Error" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="ErrorInfo" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Status" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="StatusError" type="xsd:boolean"/>
+        </xsd:sequence>
+        <xsd:attribute name="NumRows" type="xsd:int"/>
+        <xsd:attribute name="TotalRows" type="xsd:int"/>
+        <xsd:attribute name="StartRow" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="DataSet">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="DataRow" type="tns:DataRow"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DataRow">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="field" type="tns:DataField"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DataField">
+        <xsd:sequence>
+          <xsd:element name="val" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="lookup" type="tns:LookupValues"/>
+        </xsd:sequence>
+        <xsd:attribute name="type" type="xsd:string" use="optional"/>
+        <xsd:attribute name="column" type="xsd:string"/>
+        <xsd:attribute name="lval" type="xsd:string" use="optional"/>
+        <xsd:attribute name="disp" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="edit" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="error" type="xsd:boolean" use="optional"/>
+        <xsd:attribute name="errorVal" type="xsd:string" use="optional"/>
+      </xsd:complexType>
+      <xsd:complexType name="LookupValues">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="lv" type="tns:LookupValue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LookupValue">
+        <xsd:sequence/>
+        <xsd:attribute name="val" type="xsd:string"/>
+        <xsd:attribute name="key" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="GetProcessParams" type="tns:GetProcessParams"/>
+      <xsd:element name="ProcessParams" type="tns:ProcessParams"/>
+      <xsd:element name="RunProcess" type="tns:RunProcess"/>
+      <xsd:element name="RunProcessResponse" type="tns:RunProcessResponse"/>
+      <xsd:complexType name="ProcessParams">
+        <xsd:sequence>
+          <xsd:element name="Params" type="tns:ProcessParamList"/>
+          <xsd:element name="Description" type="xsd:string"/>
+          <xsd:element name="Name" type="xsd:string"/>
+          <xsd:element name="Help" type="xsd:string"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="GetProcessParams">
+        <xsd:sequence/>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="RunProcess">
+        <xsd:sequence>
+          <xsd:element name="ParamValues" type="tns:DataRow"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+        <xsd:attribute name="DocAction" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="RunProcessResponse">
+        <xsd:sequence>
+          <xsd:element name="Error" type="xsd:string"/>
+          <xsd:element name="Summary" type="xsd:string"/>
+          <xsd:element name="LogInfo" type="xsd:string"/>
+          <xsd:element name="Data" type="xsd:hexBinary"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsError" type="xsd:boolean"/>
+        <xsd:attribute name="IsReport" type="xsd:boolean"/>
+        <xsd:attribute name="ReportFormat" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="ProcessParamList">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="Param" type="tns:ProcessParam"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ProcessParam">
+        <xsd:sequence>
+          <xsd:element name="Description" type="xsd:string"/>
+          <xsd:element name="Help" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="lookup" type="tns:LookupValues"/>
+        </xsd:sequence>
+        <xsd:attribute name="Name" type="xsd:string"/>
+        <xsd:attribute name="DefaultValue" type="xsd:string"/>
+        <xsd:attribute name="DefaultValue2" type="xsd:string"/>
+        <xsd:attribute name="IsMandatory" type="xsd:boolean"/>
+        <xsd:attribute name="IsRange" type="xsd:boolean"/>
+        <xsd:attribute name="FieldLength" type="xsd:int"/>
+        <xsd:attribute name="DisplayType" type="xsd:int"/>
+        <xsd:attribute name="ColumnName" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+      <xsd:element name="ADLoginResponse" type="tns:ADLoginResponse"/>
+      <xsd:complexType name="ADLoginRequest">
+        <xsd:sequence>
+          <xsd:element name="user" type="xsd:string"/>
+          <xsd:element name="pass" type="xsd:string"/>
+          <xsd:element name="lang" type="xsd:string"/>
+          <xsd:element name="ClientID" type="xsd:int"/>
+          <xsd:element name="RoleID" type="xsd:int"/>
+          <xsd:element name="OrgID" type="xsd:int"/>
+          <xsd:element name="WarehouseID" type="xsd:int"/>
+          <xsd:element name="stage" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ADLoginResponse">
+        <xsd:sequence>
+          <xsd:element name="status" type="xsd:int"/>
+          <xsd:element name="roles" type="tns:LookupValues"/>
+          <xsd:element name="langs" type="tns:LookupValues"/>
+          <xsd:element name="orgs" type="tns:LookupValues"/>
+          <xsd:element name="clients" type="tns:LookupValues"/>
+          <xsd:element name="warehouses" type="tns:LookupValues"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StandardResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Error" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="outputFields" type="tns:outputFields"/>
+          <xsd:element minOccurs="0" name="RunProcessResponse" type="tns:RunProcessResponse"/>
+          <xsd:element minOccurs="0" name="WindowTabData" type="tns:WindowTabData"/>
+        </xsd:sequence>
+        <xsd:attribute name="IsError" type="xsd:boolean"/>
+        <xsd:attribute name="IsRolledBack" type="xsd:boolean"/>
+        <xsd:attribute name="RecordID" type="xsd:int"/>
+      </xsd:complexType>
+      <xsd:complexType name="outputFields">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="outputField" type="tns:outputField"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="outputField">
+        <xsd:attribute name="column" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="Text" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="StandardResponse" type="tns:StandardResponse"/>
+      <xsd:element name="ModelSetDocActionRequest" type="tns:ModelSetDocActionRequest"/>
+      <xsd:complexType name="ModelSetDocAction">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="tableName" type="xsd:string"/>
+          <xsd:element name="recordID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="recordIDVariable" type="xsd:string"/>
+          <xsd:element name="docAction" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelSetDocActionRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelSetDocAction" type="tns:ModelSetDocAction"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelRunProcess" type="tns:ModelRunProcess"/>
+      <xsd:complexType name="ModelRunProcess">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="ParamValues" type="tns:DataRow"/>
+        </xsd:sequence>
+        <xsd:attribute name="AD_Process_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Menu_ID" type="xsd:int"/>
+        <xsd:attribute name="AD_Record_ID" type="xsd:int"/>
+        <xsd:attribute name="DocAction" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:element name="ModelRunProcessRequest" type="tns:ModelRunProcessRequest"/>
+      <xsd:complexType name="ModelRunProcessRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelRunProcess" type="tns:ModelRunProcess"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelGetListRequest" type="tns:ModelGetListRequest"/>
+      <xsd:complexType name="ModelGetList">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="AD_Reference_ID" type="xsd:int"/>
+          <xsd:element name="Filter" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelGetListRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelGetList" type="tns:ModelGetList"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ModelCRUDRequest" type="tns:ModelCRUDRequest"/>
+      <xsd:complexType name="ModelCRUD">
+        <xsd:sequence>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element name="TableName" type="xsd:string"/>
+          <xsd:element name="RecordID" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="recordIDVariable" type="xsd:string"/>
+          <xsd:element minOccurs="0" name="Filter" type="xsd:string"/>
+          <xsd:element name="Action">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="Create"/>
+                <xsd:enumeration value="Read"/>
+                <xsd:enumeration value="Update"/>
+                <xsd:enumeration value="Delete"/>
+                <xsd:enumeration value="CreateUpdate"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Offset" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="Limit" type="xsd:int"/>
+          <xsd:element minOccurs="0" name="DataRow" type="tns:DataRow"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ModelCRUDRequest">
+        <xsd:sequence>
+          <xsd:element name="ModelCRUD" type="tns:ModelCRUD"/>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="operations">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="operation" type="tns:operation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="operation">
+        <xsd:sequence>
+          <xsd:element name="TargetPort">
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:enumeration value="createData"/>
+                <xsd:enumeration value="readData"/>
+                <xsd:enumeration value="updateData"/>
+                <xsd:enumeration value="deleteData"/>
+                <xsd:enumeration value="runProcess"/>
+                <xsd:enumeration value="setDocAction"/>
+                <xsd:enumeration value="createUpdateData"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ModelCRUD" type="tns:ModelCRUD"/>
+          <xsd:element minOccurs="0" name="ModelSetDocAction" type="tns:ModelSetDocAction"/>
+          <xsd:element minOccurs="0" name="ModelRunProcess" type="tns:ModelRunProcess"/>
+        </xsd:sequence>
+        <xsd:attribute default="false" name="preCommit" type="xsd:boolean"/>
+        <xsd:attribute default="false" name="postCommit" type="xsd:boolean"/>
+      </xsd:complexType>
+      <xsd:element name="CompositeRequest" type="tns:CompositeRequest"/>
+      <xsd:complexType name="CompositeRequest">
+        <xsd:sequence>
+          <xsd:element name="ADLoginRequest" type="tns:ADLoginRequest"/>
+          <xsd:element name="serviceType" type="xsd:string"/>
+          <xsd:element maxOccurs="unbounded" name="operations" type="tns:operations"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CompositeResponses" type="tns:CompositeResponses"/>
+      <xsd:complexType name="CompositeResponses">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="CompositeResponse" type="tns:CompositeResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CompositeResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" name="StandardResponse" type="tns:StandardResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="compositeOperationResponse">
+    <wsdl:part element="tns:CompositeResponses" name="return"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="compositeOperation">
+    <wsdl:part element="tns:CompositeRequest" name="arg0"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CompositeService">
+    <wsdl:operation name="compositeOperation">
+      <wsdl:input message="tns:compositeOperation" name="compositeOperation"></wsdl:input>
+      <wsdl:output message="tns:compositeOperationResponse" name="compositeOperationResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="compositeInterfaceSoapBinding" type="tns:CompositeService">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="compositeOperation">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="compositeOperation">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="compositeOperationResponse">
+        <soap:body namespace="http://idempiere.org/ADInterface/1_0" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="compositeInterface">
+    <wsdl:port binding="tns:compositeInterfaceSoapBinding" name="CompositeServiceImplPort">
+      <soap:address location="http://192.168.15.42:8080/ADInterface/services/compositeInterface"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://192.168.15.42:8080/ADInterface/services/compositeInterface</con:endpoint></con:endpoints><con:operation id="9620d146-9c55-4479-b797-35cd9c1d13bb" isOneWay="false" action="" name="compositeOperation" bindingOperationName="compositeOperation" type="Request-Response" outputName="compositeOperationResponse" inputName="compositeOperation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5d94a899-2fb7-4775-894f-53525c11dfee" name="user-registration"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/compositeInterface</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:compositeOperation>
+         <_0:CompositeRequest>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+            <_0:serviceType>wp-compositeWrapper</_0:serviceType>
+            <!--1 or more repetitions:-->
+            <_0:operations>
+               <!--1 or more repetitions:-->
+               <_0:operation preCommit="false" postCommit="false">
+                  <_0:TargetPort>createUpdateData</_0:TargetPort>
+                  <!--Optional:-->
+                  <_0:ModelCRUD>
+                  <_0:serviceType>wp-createUpdateUser</_0:serviceType>
+               	<_0:DataRow>
+         				<_0:field column="Name">
+                     		<_0:val>testLandlord4</_0:val>
+                  		</_0:field>
+                  		<_0:field column="Value">
+                     		<_0:val>userlogin5</_0:val>
+                  		</_0:field>
+                  		<_0:field column="Password">
+                     		<_0:val>1234</_0:val>
+                  		</_0:field>
+                  		<_0:field column="EMail">
+                     		<_0:val>1255666677@fff.com</_0:val>
+                  		</_0:field>
+                  		<_0:field column="Phone">
+                     		<_0:val>0506655</_0:val>
+                  		</_0:field>
+                   		<_0:field column="Phone2">
+                     		<_0:val>33444</_0:val>
+                  		</_0:field> 
+                   		<_0:field column="EMailVerify">
+                     		<_0:val>___---___---</_0:val>
+                  		</_0:field>    
+                  		<_0:field column="IsLocked">
+                     		<_0:val>Y</_0:val>
+                  		</_0:field>                 		
+  
+               	</_0:DataRow>
+            	    </_0:ModelCRUD>
+               </_0:operation>
+               <_0:operation>
+                  <_0:TargetPort>createData</_0:TargetPort>
+                   <!--Add new user to role BrokerUser 1000002-->
+                  <_0:ModelCRUD>
+                  <_0:serviceType>wp-AddUserRole</_0:serviceType>
+                	<_0:DataRow>
+                  		<_0:field column="AD_User_ID">
+                     	<_0:val>@AD_User.AD_User_ID</_0:val>
+                  		</_0:field>                 
+                  		<_0:field column="AD_Role_ID">
+                     	<_0:val>1000003</_0:val>
+                  		</_0:field>
+                 	</_0:DataRow>
+            	    </_0:ModelCRUD>
+               </_0:operation>
+               
+               <_0:operation>
+                  <_0:TargetPort>createData</_0:TargetPort>
+                  <!--WElcome User Request:-->
+                   <_0:ModelCRUD>
+               <_0:serviceType>wp-userRQ</_0:serviceType>
+                <_0:DataRow>
+                  <_0:field column="R_RequestType_ID">
+                     <_0:val>1000001</_0:val>
+                  </_0:field>                 
+                  <_0:field column="R_Category_ID">
+                     <_0:val>1000001</_0:val>
+                  </_0:field>
+                  <_0:field column="Summary">
+                     <_0:val>Dear Landlord
+                     Thank you for registering with us, the innovative way to manage your properties and shorten the communication gap between Landlords and Brokers
+To complete the registration process, you will be required to visit the link below to verify your email by
+entering you login credentials and the following confirmation code "___---___---" 
+http://........?</_0:val>
+                  </_0:field>
+                  <_0:field column="SalesRep_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>
+                  <_0:field column="C_BPartner_ID">
+                     <_0:val></_0:val>
+                     <!--ID of the chosen Broker company will be input here-->
+                  </_0:field>
+                  <_0:field column="AD_Table_ID">
+                     <_0:val>114</_0:val>
+                  </_0:field>
+                  <_0:field column="Record_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field>                  
+                  <_0:field column="AD_User_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field> 
+                 </_0:DataRow>
+            </_0:ModelCRUD>
+               </_0:operation>
+
+
+            </_0:operations>
+         </_0:CompositeRequest>
+      </_0:compositeOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/CompositeService/compositeOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4ec6d066-ad4a-4354-a835-186d1aba0730" name="passwordReset"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/compositeInterface</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:compositeOperation>
+         <_0:CompositeRequest>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+            <_0:serviceType>wp-compositeWrapper</_0:serviceType>
+            <!--1 or more repetitions:-->
+            <_0:operations>
+               <!--1 or more repetitions:-->
+               <_0:operation preCommit="false" postCommit="false">
+                  <_0:TargetPort>createUpdateData</_0:TargetPort>
+                  <!--Optional:-->
+                  <_0:ModelCRUD>
+                  <_0:serviceType>wp-createUpdateUser</_0:serviceType>
+               	<_0:DataRow>
+                  		<_0:field column="Password">
+                     		<_0:val>1234</_0:val>
+                  		</_0:field>
+                  		<_0:field column="EMail">
+                     		<_0:val>1234@fff.com</_0:val>
+                  		</_0:field>
+                  		<_0:field column="IsExpired">
+                     		<_0:val>Y</_0:val>
+                  		</_0:field>                    		
+               	</_0:DataRow>
+            	    </_0:ModelCRUD>
+               </_0:operation>
+               
+               <_0:operation>
+                  <_0:TargetPort>createData</_0:TargetPort>
+                  <!--Optional:-->
+                   <_0:ModelCRUD>
+               <_0:serviceType>wp-userRQ</_0:serviceType>
+                <_0:DataRow>
+                  <_0:field column="R_RequestType_ID">
+                     <_0:val>1000002</_0:val>
+                  </_0:field>                 
+                  <_0:field column="R_Category_ID">
+                     <_0:val>1000001</_0:val>
+                  </_0:field>
+                  <_0:field column="Summary">
+                     <_0:val>Dear User
+We have received your request to reset your password and it has 
+been temporarily reset to "*******"
+Please login to your account through the application and reset
+http://........?</_0:val>
+                  </_0:field>
+                  <_0:field column="SalesRep_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>
+                  <_0:field column="C_BPartner_ID">
+                     <_0:val>1000004</_0:val>
+                  </_0:field>
+                  <_0:field column="AD_Table_ID">
+                     <_0:val>114</_0:val>
+                  </_0:field>
+                  <_0:field column="Record_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field>                  
+                  <_0:field column="AD_User_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field> 
+                                    
+                 </_0:DataRow>
+            </_0:ModelCRUD>
+               </_0:operation>
+                  
+
+            </_0:operations>
+         </_0:CompositeRequest>
+      </_0:compositeOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/CompositeService/compositeOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="8188482e-e338-4fae-aae7-ec795015e65e" name="puser-registration"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://192.168.15.42:8080/ADInterface/services/compositeInterface</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:_0="http://idempiere.org/ADInterface/1_0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <_0:compositeOperation>
+         <_0:CompositeRequest>
+            <_0:ADLoginRequest>
+               <_0:user>WebService</_0:user>
+               <_0:pass>WebService</_0:pass>
+               <_0:RoleID>50004</_0:RoleID>
+               <_0:lang>128</_0:lang>
+               <_0:ClientID>11</_0:ClientID>
+               <_0:OrgID>0</_0:OrgID>
+               <_0:WarehouseID>0</_0:WarehouseID>
+               <_0:stage>0</_0:stage>
+            </_0:ADLoginRequest>
+            <_0:serviceType>wp-compositeWrapper</_0:serviceType>
+            <!--1 or more repetitions:-->
+            <_0:operations>
+               <!--1 or more repetitions:-->
+               <_0:operation preCommit="false" postCommit="false">
+                  <_0:TargetPort>createUpdateData</_0:TargetPort>
+                  <!--Optional:-->
+                  <_0:ModelCRUD>
+                  <_0:serviceType>wp-createUpdateUser</_0:serviceType>
+               	<_0:DataRow>
+               		<_0:field column="C_BPartner_ID">
+                     		<_0:val>121</_0:val><!--Broker 01-->
+                  		</_0:field>
+         				<_0:field column="Name">
+                     		<_0:val>test pa55</_0:val>
+                  		</_0:field>
+                  		<_0:field column="Value">
+                     		<_0:val>tu5555se01</_0:val>
+                  		</_0:field>                  		
+                  		<_0:field column="Password">
+                     		<_0:val>1234</_0:val>
+                  		</_0:field>
+                  		<_0:field column="EMail">
+                     		<_0:val>sddr5sfsd@fsfds.com</_0:val>
+                  		</_0:field>
+                  		<_0:field column="Phone">
+                     		<_0:val>76786</_0:val>
+                  		</_0:field>
+                   		<_0:field column="Phone2">
+                     		<_0:val>68976</_0:val>
+                  		</_0:field> 
+                   		<_0:field column="EMailVerify">
+                     		<_0:val>_uuygbtrb__---</_0:val>
+                  		</_0:field>    
+                  		<_0:field column="IsLocked">
+                     		<_0:val>Y</_0:val>
+                  		</_0:field>                		
+  
+               	</_0:DataRow>
+            	    </_0:ModelCRUD>
+               </_0:operation>
+               <_0:operation>
+                  <_0:TargetPort>createData</_0:TargetPort>
+                   <!--Add new user to role landlord 1000003-->
+                  <_0:ModelCRUD>
+                  <_0:serviceType>wp-AddUserRole</_0:serviceType>
+                	<_0:DataRow>
+                  		<_0:field column="AD_User_ID">
+                     	<_0:val>@AD_User.AD_User_ID</_0:val>
+                  		</_0:field>                 
+                  		<_0:field column="AD_Role_ID">
+                     	<_0:val>1000000</_0:val>
+                  		</_0:field>
+                 	</_0:DataRow>
+            	    </_0:ModelCRUD>
+               </_0:operation>
+               
+               <_0:operation>
+                  <_0:TargetPort>createData</_0:TargetPort>
+                  <!--Optional:-->
+                   <_0:ModelCRUD>
+               <_0:serviceType>wp-userRQ</_0:serviceType>
+                <_0:DataRow>
+                  <_0:field column="R_RequestType_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>                 
+                  <_0:field column="R_Category_ID">
+                     <_0:val>1000000</_0:val>
+                  </_0:field>
+                  <_0:field column="Summary">
+                     <_0:val>Dear Landlord
+                     Thank you for registering with us, the innovative way to manage your properties and shorten the communication gap between Landlords and Brokers
+To complete the registration process, you will be required to visit the link below to verify your email by
+entering you login credentials and the following confirmation code "___---___---" 
+http://..&amp;....?</_0:val>
+                  </_0:field>
+                  <_0:field column="SalesRep_ID">
+                     <_0:val>101</_0:val>
+                  </_0:field>
+                  <_0:field column="C_BPartner_ID">
+                     <_0:val>@AD_User.C_BPartner_ID</_0:val>
+                  </_0:field>
+                  <_0:field column="AD_Table_ID">
+                     <_0:val>114</_0:val>
+                  </_0:field>
+                  <_0:field column="Record_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field>                  
+                  <_0:field column="AD_User_ID">
+                     <_0:val>@AD_User.AD_User_ID</_0:val>
+                  </_0:field> 
+                  <_0:field column="Priority">
+                     <_0:val>3</_0:val>
+                  </_0:field> 
+                                    
+                 </_0:DataRow>
+            </_0:ModelCRUD>
+               </_0:operation>
+                  
+
+            </_0:operations>
+         </_0:CompositeRequest>
+      </_0:compositeOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://idempiere.org/ADInterface/1_0/CompositeService/compositeOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
